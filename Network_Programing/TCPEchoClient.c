@@ -1,20 +1,10 @@
 //
-//  main.c
-//  Network_Programing
-//
-//  Created by Seokhwan Kwon on 2020/04/23.
-//  Copyright © 2020 Seokhwan Kwon. All rights reserved.
-//
-
-//
 //  TCPEchoClient.c
 //  Network_Programing
 //
 //  Created by Seokhwan Kwon on 2020/04/23.
 //  Copyright © 2020 Seokhwan Kwon. All rights reserved.
 //
-
-#include "DieWithError.h"
 
 #include <stdio.h>
 #include <sys/socket.h>
@@ -63,8 +53,7 @@ int main(int argc, char *argv[])
     if(connect(sock, (struct sockaddr *)&echoServAddr, sizeof(echoServAddr)) <0)
         DieWithError("connect() failed");
     
-    //echoStringLen = (unsigned int)strlen(echoString); // (unsigned int) 요고 내가 추가한 것
-    echoStringLen = strlen(echoString); // (unsigned int) 요고 내가 추가한 것
+    echoStringLen = (unsigned int)strlen(echoString); // (unsigned int) 요고 내가 추가한 것
     
     if(send(sock, echoString, echoStringLen, 0) != echoStringLen)
         DieWithError("send() sent a differnet number of bytes than expected");
@@ -73,17 +62,13 @@ int main(int argc, char *argv[])
     printf("Received : ");
     while(totalBytesRcvd < echoStringLen)
     {
-        //if((bytesRcvd = (int)recv(sock, echoBuffer, RCVBUFSIZE - 1, 0)) <= 0)   // (int) 요거 내가 추가한 것
-        if((bytesRcvd = recv(sock, echoBuffer, RCVBUFSIZE - 1, 0)) <= 0)   // (int) 요거 내가 추가한 것
+        if((bytesRcvd = (int)recv(sock, echoBuffer, RCVBUFSIZE - 1, 0)) <= 0)   // (int) 요거 내가 추가한 것
             DieWithError("recv() failed or connection closed prematurely");
         totalBytesRcvd += bytesRcvd;
         echoBuffer[bytesRcvd] = '\0';
-        //printf("%s", echoBuffer);   // "%s", 요거 내가 추가한 것
-        printf(echoBuffer);   // "%s", 요거 내가 추가한 것
+        printf("%s", echoBuffer);   // "%s", 요거 내가 추가한 것
     }
     printf("\n");
     close(sock);
     exit(0);
-    
-    return 0;
 }
