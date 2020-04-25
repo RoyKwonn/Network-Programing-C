@@ -6,30 +6,42 @@
 //  Copyright © 2020 Seokhwan Kwon. All rights reserved.
 //
 
-#include <stdio.h>
-#include <sys/socket.h>
-#include <unistd.h>
+#include <stdio.h>                          // for printf() and fprintf()
+#include <sys/socket.h>                     // for recv() and send()
+#include <unistd.h>                         // for close()
 
-#define RCVBUFSIZE 32
+#define RCVBUFSIZE 32                       // Size of receive buffer
 
-void DieWithError(char *errorMessage);
+void DieWithError(char *errorMessage);      // Error handling function
+
 
 void HandleTCPClient(int clntSocket)
 {
-    char echoBuffer[RCVBUFSIZE];
-    int recvMsgSize;
+    char echoBuffer[RCVBUFSIZE];            // Buffer for echo string
+    int recvMsgSize;                        // Size of received message
+    
+    
+    // Receive message from client
     
     if((recvMsgSize = recv(clntSocket, echoBuffer, RCVBUFSIZE, 0)) < 0)
         DieWithError("recv() failed");
     
-    while(recvMsgSize > 0)
+    
+    // Send received string and receive again util end of transmission
+    
+    while(recvMsgSize > 0)                  // Zero indicates end of transmission
     {
+        // Echo message back to client
+        
         if(send(clntSocket, echoBuffer, recvMsgSize, 0) != recvMsgSize)
             DieWithError("send() failed");
+        
+        
+        // See if there is more data to receive
         
         if((recvMsgSize = recv(clntSocket, echoBuffer, RCVBUFSIZE, 0)) < 0)
             DieWithError("recv() failed");
     }
     
-    close(clntSocket);
+    close(clntSocket);                      // Close client socket
 }
