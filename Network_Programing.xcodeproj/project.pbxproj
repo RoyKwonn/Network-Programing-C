@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D5BEA48F2453EA8B00DC6304 /* DieWithError.c in Sources */ = {isa = PBXBuildFile; fileRef = D5BEA48E2453EA8B00DC6304 /* DieWithError.c */; };
-		D5C7FC972476E49A00CD38DF /* RSA2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5C7FC962476E49A00CD38DF /* RSA2.cpp */; };
+		D5131280249D122400BA30BD /* UDPEchoClient.c in Sources */ = {isa = PBXBuildFile; fileRef = D513127D249D0C4400BA30BD /* UDPEchoClient.c */; };
+		D56A750E249F50A700D1DBAE /* UDPEchoServer.c in Sources */ = {isa = PBXBuildFile; fileRef = D513127E249D120200BA30BD /* UDPEchoServer.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,6 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D513127D249D0C4400BA30BD /* UDPEchoClient.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = UDPEchoClient.c; sourceTree = "<group>"; };
+		D513127E249D120200BA30BD /* UDPEchoServer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = UDPEchoServer.c; sourceTree = "<group>"; };
+		D56A750D249F4FC600D1DBAE /* DieWithError.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DieWithError.c; sourceTree = "<group>"; };
 		D5A9A02124519C8D0040E440 /* Network_Programing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Network_Programing; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5A9A02424519C8D0040E440 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		D5A9A02B24519CBE0040E440 /* TCPEchoClient.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TCPEchoClient.c; sourceTree = "<group>"; };
@@ -45,11 +48,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D513127C249D0C2500BA30BD /* UDP */ = {
+			isa = PBXGroup;
+			children = (
+				D513127D249D0C4400BA30BD /* UDPEchoClient.c */,
+				D513127E249D120200BA30BD /* UDPEchoServer.c */,
+				D56A750D249F4FC600D1DBAE /* DieWithError.c */,
+			);
+			path = UDP;
+			sourceTree = "<group>";
+		};
 		D5A9A01824519C8D0040E440 = {
 			isa = PBXGroup;
 			children = (
+				D513127C249D0C2500BA30BD /* UDP */,
 				D5C7FC932476DC6900CD38DF /* Encryption */,
-				D5A9A02324519C8D0040E440 /* Network_Programing */,
+				D5A9A02324519C8D0040E440 /* TCP */,
 				D5A9A02224519C8D0040E440 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,7 +76,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5A9A02324519C8D0040E440 /* Network_Programing */ = {
+		D5A9A02324519C8D0040E440 /* TCP */ = {
 			isa = PBXGroup;
 			children = (
 				D5A9A02424519C8D0040E440 /* main.c */,
@@ -71,7 +85,7 @@
 				D5BEA4902453F6BB00DC6304 /* TCPEchoServer.c */,
 				D5BEA4912453F97C00DC6304 /* HandleTCPClient.c */,
 			);
-			path = Network_Programing;
+			path = TCP;
 			sourceTree = "<group>";
 		};
 		D5C7FC932476DC6900CD38DF /* Encryption */ = {
@@ -140,8 +154,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C7FC972476E49A00CD38DF /* RSA2.cpp in Sources */,
-				D5BEA48F2453EA8B00DC6304 /* DieWithError.c in Sources */,
+				D5131280249D122400BA30BD /* UDPEchoClient.c in Sources */,
+				D56A750E249F50A700D1DBAE /* UDPEchoServer.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
